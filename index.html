@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COP4813 - Assignment 2</title>
+</head>
+<body>
+
+    <p>Name: Thomas Schmidt</p>
+    <p>Course: COP4813 - Web Applications Programming</p>
+    <p>Major: Computer Science</p>
+    <p>Message: Hello World!</p>
+    <p>Current time: <span id="current-time"></span></p>
+    <p>Time Period: <span id="time-period"></span></p>
+
+
+    <script>
+        function updateTimeAndBackground() {
+            const now = new Date()
+            const hours = now.getHours()
+
+            const timeString = now.toLocaleString([], {
+              	hour: "2-digit",
+              	minute: "2-digit",
+            })
+
+            document.getElementById('current-time').textContent = timeString
+
+            let backgroundColor
+            let timePeriod
+
+            if (hours >= 6 && hours < 12) {
+                backgroundColor = '#6d9e8a'
+                timePeriod = 'Morning'
+            } else if (hours >= 12 && hours < 18) {
+                backgroundColor = '#87CEEB'
+                timePeriod = 'Afternoon'
+            } else if (hours >= 18 && hours < 21) {
+                backgroundColor = '#877d5b'
+                timePeriod = 'Evening'
+            } else {
+                backgroundColor = '#676d73'
+                timePeriod = 'Night'
+            }
+
+            document.body.style.backgroundColor = backgroundColor
+            document.getElementById('time-period').textContent = timePeriod
+        }
+
+        updateTimeAndBackground()
+        setInterval(updateTimeAndBackground, 1000)
+    </script>
+</body>
+</html>
